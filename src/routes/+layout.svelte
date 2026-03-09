@@ -9,7 +9,9 @@
 
 	onMount(() => {
 		const handleScroll = () => {
-			scrolled = window.scrollY > 100
+			const y = window.scrollY
+		if (y > 80) scrolled = true
+		else if (y < 20) scrolled = false
 		}
 		window.addEventListener("scroll", handleScroll)
 		return () => window.removeEventListener("scroll", handleScroll)
@@ -20,19 +22,18 @@
 	}
 </script>
 
+<Header hideNavigation={scrolled} />
 <main class="flex w-full flex-col items-center">
-	<Header hideNavigation={scrolled} />
 	<div class="flex w-full flex-col">
 		{@render children()}
 	</div>
-
-	{#if scrolled}
-		<button
-			onclick={scrollToTop}
-			class="fixed right-4 bottom-4 h-9 w-9 rounded-full border border-warm bg-white text-text-muted shadow-sm transition-colors hover:text-text"
-			aria-label="Scroll to top"
-		>
-			&uarr;
-		</button>
-	{/if}
 </main>
+{#if scrolled}
+	<button
+		onclick={scrollToTop}
+		class="fixed right-4 bottom-4 h-9 w-9 rounded-full border border-warm bg-white text-text-muted shadow-sm transition-colors hover:text-text"
+		aria-label="Scroll to top"
+	>
+		&uarr;
+	</button>
+{/if}
