@@ -25,8 +25,11 @@ export const load: PageServerLoad = async ({ fetch }) => {
 
 	return {
 		links: {
-			Tuesday: { link: data.Tuesday.link, date: data.Tuesday.date ? new Date(data.Tuesday.date) : null },
-			Friday: { link: data.Friday.link, date: data.Friday.date ? new Date(data.Friday.date) : null },
+			Tuesday: {
+				link: data.Tuesday.link,
+				date: data.Tuesday.date ? new Date(data.Tuesday.date) : null
+			},
+			Friday: { link: data.Friday.link, date: data.Friday.date ? new Date(data.Friday.date) : null }
 		}
 	}
 }

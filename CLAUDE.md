@@ -4,15 +4,15 @@ Volunteer-run website for a Utrecht-based expat meetup community. Intentionally 
 
 ## Stack
 
-| Tool | Version |
-|---|---|
-| SvelteKit | ^2.50 |
-| Svelte | ^5.50 (runes mode) |
-| Vite | ^6 |
-| Tailwind CSS | v4 (via `@tailwindcss/vite`) |
-| TypeScript | ^5, strict mode |
-| Adapter | `@sveltejs/adapter-netlify` |
-| Linting | ESLint 9 flat config + Prettier 3 |
+| Tool         | Version                           |
+| ------------ | --------------------------------- |
+| SvelteKit    | ^2.50                             |
+| Svelte       | ^5.50 (runes mode)                |
+| Vite         | ^6                                |
+| Tailwind CSS | v4 (via `@tailwindcss/vite`)      |
+| TypeScript   | ^5, strict mode                   |
+| Adapter      | `@sveltejs/adapter-netlify`       |
+| Linting      | ESLint 9 flat config + Prettier 3 |
 
 ## Commands
 
@@ -86,16 +86,16 @@ $effect(() => { console.log(open) })
 
 ### Custom color palette
 
-| Variable | Usage |
-|---|---|
-| `--color-cream` (`#faf7f2`) | Page background |
-| `--color-warm` (`#f0ebe4`) | Borders, subtle backgrounds |
-| `--color-surface` (`#1e1c1a`) | Dark sections background |
-| `--color-accent` (`#00816a`) | Primary interactive color (teal) |
-| `--color-accent-light` (`#e6f4f0`) | Light accent backgrounds |
-| `--color-highlight` (`#e8d5b7`) | Warm beige highlights |
-| `--color-text` (`#2d2a26`) | Body text |
-| `--color-text-muted` (`#6b6560`) | Secondary text |
+| Variable                           | Usage                            |
+| ---------------------------------- | -------------------------------- |
+| `--color-cream` (`#faf7f2`)        | Page background                  |
+| `--color-warm` (`#f0ebe4`)         | Borders, subtle backgrounds      |
+| `--color-surface` (`#1e1c1a`)      | Dark sections background         |
+| `--color-accent` (`#00816a`)       | Primary interactive color (teal) |
+| `--color-accent-light` (`#e6f4f0`) | Light accent backgrounds         |
+| `--color-highlight` (`#e8d5b7`)    | Warm beige highlights            |
+| `--color-text` (`#2d2a26`)         | Body text                        |
+| `--color-text-muted` (`#6b6560`)   | Secondary text                   |
 
 Use these semantic names — avoid raw Tailwind color utilities like `text-green-700`.
 

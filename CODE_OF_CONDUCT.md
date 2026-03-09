@@ -21,6 +21,7 @@ Many of our community interactions also happen offline.
 People are human. Misunderstandings happen.
 
 If something comes out wrong:
+
 - Clarify.
 - Apologize if needed.
 - Move forward respectfully.

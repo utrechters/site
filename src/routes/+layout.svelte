@@ -10,8 +10,8 @@
 	onMount(() => {
 		const handleScroll = () => {
 			const y = window.scrollY
-		if (y > 80) scrolled = true
-		else if (y < 20) scrolled = false
+			if (y > 80) scrolled = true
+			else if (y < 20) scrolled = false
 		}
 		window.addEventListener("scroll", handleScroll)
 		return () => window.removeEventListener("scroll", handleScroll)
@@ -31,7 +31,7 @@
 {#if scrolled}
 	<button
 		onclick={scrollToTop}
-		class="fixed right-4 bottom-4 h-9 w-9 rounded-full border border-warm bg-white text-text-muted shadow-sm transition-colors hover:text-text"
+		class="border-warm text-text-muted hover:text-text fixed right-4 bottom-4 h-9 w-9 rounded-full border bg-white shadow-sm transition-colors"
 		aria-label="Scroll to top"
 	>
 		&uarr;

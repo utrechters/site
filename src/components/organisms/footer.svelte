@@ -4,7 +4,7 @@
 	const year = new Date().getFullYear()
 </script>
 
-<footer class="flex w-full flex-col items-center gap-3 bg-surface py-5">
+<footer class="bg-surface flex w-full flex-col items-center gap-3 py-5">
 	<a
 		href="https://www.github.com/utrechters/site"
 		target="_blank"

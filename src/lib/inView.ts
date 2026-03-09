@@ -4,13 +4,7 @@ type InViewOptions = IntersectionObserverInit & {
 }
 
 export function inView(node: HTMLElement, opts: InViewOptions = {}) {
-	const {
-		threshold = 0.15,
-		root = null,
-		rootMargin = "0px",
-		once = true,
-		onEnter
-	} = opts
+	const { threshold = 0.15, root = null, rootMargin = "0px", once = true, onEnter } = opts
 
 	const observer = new IntersectionObserver(
 		([entry]) => {
