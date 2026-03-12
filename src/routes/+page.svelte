@@ -83,7 +83,6 @@
 		rel="noreferrer"
 		class="absolute bottom-8 flex items-center gap-1.5 text-xs text-white/40 hover:text-white/70 motion-safe:transition"
 	>
-		<img src="/miffy.png" alt="" class="h-4 w-4 rounded object-contain opacity-60" />
 		Browse all events &rarr;
 	</a>
 </section>

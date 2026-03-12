@@ -5,10 +5,13 @@
 	let { hideNavigation }: { hideNavigation: boolean } = $props()
 </script>
 
-<header class="fixed top-0 z-50 flex w-full px-6 py-3 {hideNavigation ? 'bg-white shadow-sm' : ''}">
+<header
+	class="fixed top-0 z-50 flex w-full px-6 py-3 {hideNavigation ? 'sm:bg-white sm:shadow-sm' : ''}"
+>
 	{#if hideNavigation}
-		<Navigation />
-	{:else}
-		<AltNav />
+		<div class="hidden w-full sm:flex">
+			<Navigation />
+		</div>
 	{/if}
+	<AltNav class={hideNavigation ? "sm:hidden" : ""} />
 </header>
