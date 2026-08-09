@@ -1,0 +1,18 @@
+[
+	{ "id": "ro-mici", "category": "food", "intensity": 1 },
+	{ "id": "ro-tuica", "category": "spirit", "intensity": 1 },
+	{ "id": "ro-sarmale", "category": "food", "intensity": 2 },
+	{ "id": "ro-cozonac", "category": "food", "intensity": 1 },
+	{ "id": "ro-transylvania", "category": "place", "intensity": 3 },
+	{ "id": "ro-danube-delta", "category": "place", "intensity": 2 },
+	{ "id": "ro-dracula", "category": "icon", "intensity": 1 },
+	{ "id": "ro-painted-monasteries", "category": "icon", "intensity": 3 },
+	{ "id": "ro-cfr-trains", "category": "transport", "intensity": 1 },
+	{ "id": "ro-horse-cart", "category": "transport", "intensity": 2 },
+	{ "id": "ro-hospitality", "category": "trait", "intensity": 3 },
+	{ "id": "ro-resourceful", "category": "trait", "intensity": 2 },
+	{ "id": "ro-superstitious", "category": "trait", "intensity": 1 },
+	{ "id": "ro-it-boom", "category": "economics", "intensity": 2 },
+	{ "id": "ro-affordable-living", "category": "economics", "intensity": 2 },
+	{ "id": "ro-brain-drain", "category": "economics", "intensity": 3 }
+]

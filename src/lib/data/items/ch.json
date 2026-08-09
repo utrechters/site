@@ -1,0 +1,17 @@
+[
+	{ "id": "ch-fondue", "category": "food", "intensity": 1 },
+	{ "id": "ch-raclette", "category": "food", "intensity": 2 },
+	{ "id": "ch-chocolate", "category": "food", "intensity": 1 },
+	{ "id": "ch-alps", "category": "place", "intensity": 2 },
+	{ "id": "ch-matterhorn", "category": "place", "intensity": 3 },
+	{ "id": "ch-swiss-army-knife", "category": "icon", "intensity": 1 },
+	{ "id": "ch-watchmaking", "category": "icon", "intensity": 3 },
+	{ "id": "ch-neutrality", "category": "icon", "intensity": 3 },
+	{ "id": "ch-trains-on-time", "category": "transport", "intensity": 2 },
+	{ "id": "ch-cable-car", "category": "transport", "intensity": 1 },
+	{ "id": "ch-punctual", "category": "trait", "intensity": 3 },
+	{ "id": "ch-multilingual", "category": "trait", "intensity": 2 },
+	{ "id": "ch-reserved", "category": "trait", "intensity": 2 },
+	{ "id": "ch-banking", "category": "economics", "intensity": 3 },
+	{ "id": "ch-expensive", "category": "economics", "intensity": 2 }
+]

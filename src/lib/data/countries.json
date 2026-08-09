@@ -1,0 +1,6 @@
+[
+	{ "code": "CH", "name": "Switzerland", "region": "Europe", "flag": "🇨🇭" },
+	{ "code": "HU", "name": "Hungary", "region": "Europe", "flag": "🇭🇺" },
+	{ "code": "NL", "name": "Netherlands", "region": "Europe", "flag": "🇳🇱" },
+	{ "code": "RO", "name": "Romania", "region": "Europe", "flag": "🇷🇴" }
+]

@@ -1,0 +1,18 @@
+[
+	{ "id": "nl-stroopwafel", "category": "food", "intensity": 1 },
+	{ "id": "nl-jenefer", "category": "spirit", "intensity": 1 },
+	{ "id": "nl-hagelslag", "category": "food", "intensity": 1 },
+	{ "id": "nl-herring", "category": "food", "intensity": 2 },
+	{ "id": "nl-drop", "category": "food", "intensity": 2 },
+	{ "id": "nl-amsterdam-canals", "category": "place", "intensity": 2 },
+	{ "id": "nl-tulip-fields", "category": "place", "intensity": 1 },
+	{ "id": "nl-cycling", "category": "icon", "intensity": 3 },
+	{ "id": "nl-windmills", "category": "icon", "intensity": 1 },
+	{ "id": "nl-orange-fever", "category": "icon", "intensity": 2 },
+	{ "id": "nl-ns-trains", "category": "transport", "intensity": 2 },
+	{ "id": "nl-directness", "category": "trait", "intensity": 3 },
+	{ "id": "nl-tall", "category": "trait", "intensity": 1 },
+	{ "id": "nl-gezelligheid", "category": "trait", "intensity": 3 },
+	{ "id": "nl-polder-model", "category": "economics", "intensity": 3 },
+	{ "id": "nl-port-rotterdam", "category": "economics", "intensity": 2 }
+]

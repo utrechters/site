@@ -40,6 +40,29 @@ If a decision isn’t obvious, it may be discussed internally with the “intern
 
 Not every proposal will be accepted, but every contribution will be treated respectfully.
 
+## How to Add an Expat Bivalent Item
+
+The game's content lives in flat JSON files — no code changes needed.
+
+1. Open `src/lib/data/items/<code>.json` for your country (`ch`, `ro`, or `nl`).
+2. Append one line:
+
+   ```json
+   { "id": "nl-example", "category": "food", "intensity": 1 }
+   ```
+
+   - `id` must be prefixed with the country code (`nl-*` in `items/nl.json`).
+   - `category`: one of `food` | `place` | `icon` | `transport` | `trait` | `economics` | `misc`.
+   - `intensity`: `1` (light/fun) · `2` (notable) · `3` (identity-defining).
+
+3. Add the English display string to `src/lib/data/i18n/en/<code>.json`:
+   ```json
+   { ..., "nl-example": "My item label" }
+   ```
+4. Optionally add translations in `src/lib/data/i18n/nl/<code>.json` and `hu/`.
+5. Run `npm run validate:data` — all checks must pass.
+6. Open a PR. No code review needed for content-only additions.
+
 ## Keep It Kind
 
 This is a community project.  

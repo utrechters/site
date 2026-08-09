@@ -1,0 +1,17 @@
+[
+	{ "id": "hu-goulash", "category": "food", "intensity": 3 },
+	{ "id": "hu-langos", "category": "food", "intensity": 1 },
+	{ "id": "hu-paprika", "category": "food", "intensity": 2 },
+	{ "id": "hu-palinka", "category": "spirit", "intensity": 2 },
+	{ "id": "hu-balaton", "category": "place", "intensity": 2 },
+	{ "id": "hu-thermal-baths", "category": "place", "intensity": 3 },
+	{ "id": "hu-rubiks-cube", "category": "icon", "intensity": 2 },
+	{ "id": "hu-folk-embroidery", "category": "icon", "intensity": 3 },
+	{ "id": "hu-budapest-tram", "category": "transport", "intensity": 1 },
+	{ "id": "hu-ikarus-bus", "category": "transport", "intensity": 2 },
+	{ "id": "hu-pessimism", "category": "trait", "intensity": 2 },
+	{ "id": "hu-genius", "category": "trait", "intensity": 3 },
+	{ "id": "hu-forint", "category": "economics", "intensity": 1 },
+	{ "id": "hu-thermal-tourism", "category": "economics", "intensity": 2 },
+	{ "id": "hu-brain-drain", "category": "economics", "intensity": 3 }
+]
