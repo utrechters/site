@@ -1,0 +1,23 @@
+# Utrechters
+
+> Utrechters is a volunteer-run meetup community for expats and locals in Utrecht, the Netherlands. It was founded in 2008 and was previously called "Make The Most Of Utrecht" on Meetup.
+
+## Key facts
+
+- Weekly meetup every Tuesday at Mick O'Connells, Jansdam 3, 3512 HA Utrecht.
+- Drinks on the first Friday of each month, at a different place each time.
+- Events are free. Attendees pay for their own drinks and food.
+- Anyone can join, whether they live in the Netherlands or are visiting. People banned by a venue or by the organizers are excluded.
+- Volunteers organize everything. Core organizers share the costs of Meetup and the website, and members can donate at https://bunq.me/UtrechtersMeetup.
+- Most communication happens in the Utrechters WhatsApp community, which has community guidelines and group rules.
+
+## Pages
+
+- [Home](https://utrechters.net/): upcoming events, about the community, guidelines, WhatsApp rules, FAQ and contact options.
+- [Privacy policy](https://utrechters.net/privacy): how the website handles visitor data.
+
+## Elsewhere
+
+- [Meetup group](https://www.meetup.com/utrechters/): all events and RSVPs.
+- [Facebook](https://www.facebook.com/profile.php?id=61576281328467)
+- [Website source on GitHub](https://www.github.com/utrechters/site)

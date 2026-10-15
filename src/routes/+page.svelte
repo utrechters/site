@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from "$app/environment"
 	import { inView } from "$lib/inView"
+	import { jsonLd, SITE_URL, TUESDAY_VENUE } from "$lib/seo"
 
 	import EventBox from "../components/atoms/eventBox.svelte"
 	import Footer from "../components/organisms/footer.svelte"
@@ -45,8 +46,8 @@
 			text: "Take long conversations to “Discuss anything” or a private chat."
 		},
 		{
-			title: "No advertising.",
-			text: "Don't promote businesses, services, paid events or fundraisers. If you're not sure, ask an admin first."
+			title: "No self-promotion.",
+			text: "✅ Going to a concert together is good. ❌ Promoting your <strong>own</strong> yoga class is bad. Not sure? Ask an admin."
 		},
 		{
 			title: "No politics.",
@@ -54,7 +55,25 @@
 		}
 	]
 
+	const tuesday = `Every Tuesday we meet at ${TUESDAY_VENUE.name}, ${TUESDAY_VENUE.streetAddress}, Utrecht.`
+
 	const faq = [
+		{
+			q: "When and where do you meet?",
+			a: `${tuesday} On the first Friday of each month we go out for drinks, at a different place each time. We list all events on Meetup.`
+		},
+		{
+			q: "Do events cost money?",
+			a: "No. Our events are free. You only pay for your own drinks and food."
+		},
+		{
+			q: "Who can join?",
+			a: "Anyone, whether you live in the Netherlands or are just visiting. The only exception is people banned by the venue or by the organizers."
+		},
+		{
+			q: "How do I join?",
+			a: "RSVP to an event on Meetup or join our WhatsApp community. You can also just show up on a Tuesday."
+		},
 		{
 			q: "Why are there several groups?",
 			a: "The main group has many members, so it stays focused on meeting up. Other groups, like “Discuss anything”, are for everything else. Join the ones you like."
@@ -84,16 +103,23 @@
 		name="description"
 		content="Utrechters is a volunteer-run meetup group for locals and expats in Utrecht. We meet every Tuesday and first Friday for drinks, fun, and new friendships."
 	/>
-	<link rel="canonical" href="https://utrechters.net" />
+	<link rel="canonical" href="{SITE_URL}/" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://utrechters.net" />
+	<meta property="og:site_name" content="Utrechters" />
+	<meta property="og:locale" content="en_GB" />
+	<meta property="og:url" content="{SITE_URL}/" />
 	<meta property="og:title" content="Utrechters — Utrecht's expat meetup community" />
 	<meta
 		property="og:description"
 		content="Volunteer-run meetup group for locals and expats in Utrecht, since 2008."
 	/>
-	<meta property="og:image" content="https://utrechters.net/utrechters.png" />
-	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="og:image" content="{SITE_URL}/utrechters.png" />
+	<meta property="og:image:width" content="1437" />
+	<meta property="og:image:height" content="1437" />
+	<meta property="og:image:alt" content="Utrechters logo" />
+	<meta name="twitter:card" content="summary" />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html jsonLd(events, faq)}
 </svelte:head>
 
 <section
@@ -105,10 +131,13 @@
 			alt="Utrechters logo"
 			class="mb-6 h-56 w-56 rounded-lg object-cover shadow-2xl shadow-black/60"
 		/>
-		<h1 class="mb-1 text-2xl font-bold tracking-tight text-white">Welcome!</h1>
-		<p class="text-sm text-white/50">
-			We are the <span class="font-semibold text-white/80">UTRECHTERS</span>.
-		</p>
+		<h1>
+			<span class="mb-1 block text-2xl font-bold tracking-tight text-white">Welcome!</span>
+			<span class="block text-sm font-normal text-white/50">
+				We are the <span class="font-semibold text-white/80">UTRECHTERS</span>.
+			</span>
+		</h1>
+		<p class="mt-3 text-sm text-white/50">Expat and local meetups in Utrecht since 2008.</p>
 	</div>
 
 	<div class="mt-20 flex w-full max-w-4xl flex-col items-center gap-4">
@@ -256,7 +285,8 @@
 							<span class="text-accent font-bold" aria-hidden="true">{i + 1}</span>
 							<div>
 								<p class="text-text font-semibold">{rule.title}</p>
-								<p class="text-text/70 mt-1 text-sm leading-relaxed">{rule.text}</p>
+								<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+								<p class="text-text/70 mt-1 text-sm leading-relaxed">{@html rule.text}</p>
 							</div>
 						</li>
 					{/each}
@@ -276,7 +306,7 @@
 				</div>
 			</div>
 
-			<h3 class="text-text mt-12 mb-4 text-xl font-bold">How the WhatsApp groups work</h3>
+			<h3 class="text-text mt-12 mb-4 text-xl font-bold">Frequently asked questions</h3>
 
 			<div class="space-y-3">
 				{#each faq as item (item.q)}
@@ -300,7 +330,7 @@
 					Most of our communication happens in our WhatsApp community.
 				</p>
 				<a
-					href="https://chat.whatsapp.com/GopSuzuFKRBKeYVKQrX4pE"
+					href="/p/whatsapp"
 					target="_blank"
 					rel="noreferrer"
 					class="bg-accent hover:bg-accent/85 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-white motion-safe:transition"
@@ -347,51 +377,45 @@
 						<p class="mt-1 text-sm text-text/70">Send us a message anytime.</p>
 					</li> -->
 
-					<li
-						class="bg-cream/70 rounded-xl p-4 ring-1 ring-black/5
-						       motion-safe:transition motion-safe:duration-200 motion-safe:ease-out
-						       motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md"
-					>
-						<p class="text-text font-semibold">WhatsApp Community</p>
+					<li>
 						<a
 							href="/p/whatsapp"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-accent mt-1 block text-sm underline-offset-4 hover:underline hover:opacity-90 motion-safe:transition"
+							class="group bg-cream/70 focus-visible:outline-accent block rounded-xl p-4 ring-1 ring-black/5 focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:transition motion-safe:duration-200 motion-safe:ease-out motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md"
 						>
-							Join the conversation
+							<span class="text-text block font-semibold">WhatsApp Community</span>
+							<span class="text-accent mt-1 block text-sm underline-offset-4 group-hover:underline"
+								>Join the conversation</span
+							>
 						</a>
 					</li>
 
-					<li
-						class="bg-cream/70 rounded-xl p-4 ring-1 ring-black/5
-						       motion-safe:transition motion-safe:duration-200 motion-safe:ease-out
-						       motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md"
-					>
-						<p class="text-text font-semibold">Meetup</p>
+					<li>
 						<a
 							href="https://www.meetup.com/utrechters/"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-accent mt-1 block text-sm underline-offset-4 hover:underline hover:opacity-90 motion-safe:transition"
+							class="group bg-cream/70 focus-visible:outline-accent block rounded-xl p-4 ring-1 ring-black/5 focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:transition motion-safe:duration-200 motion-safe:ease-out motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md"
 						>
-							Message us directly through the Meetup platform.
+							<span class="text-text block font-semibold">Meetup</span>
+							<span class="text-accent mt-1 block text-sm underline-offset-4 group-hover:underline"
+								>Message us directly through the Meetup platform.</span
+							>
 						</a>
 					</li>
 
-					<li
-						class="bg-cream/70 rounded-xl p-4 ring-1 ring-black/5
-						       motion-safe:transition motion-safe:duration-200 motion-safe:ease-out
-						       motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md"
-					>
-						<p class="text-text font-semibold">Facebook</p>
+					<li>
 						<a
 							href="https://www.facebook.com/profile.php?id=61576281328467"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-accent mt-1 block text-sm underline-offset-4 hover:underline hover:opacity-90 motion-safe:transition"
+							class="group bg-cream/70 focus-visible:outline-accent block rounded-xl p-4 ring-1 ring-black/5 focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:transition motion-safe:duration-200 motion-safe:ease-out motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md"
 						>
-							Contact us here
+							<span class="text-text block font-semibold">Facebook</span>
+							<span class="text-accent mt-1 block text-sm underline-offset-4 group-hover:underline"
+								>Contact us here</span
+							>
 						</a>
 					</li>
 				</ul>

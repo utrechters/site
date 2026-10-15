@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /p/
+
+Sitemap: https://utrechters.net/sitemap.xml
