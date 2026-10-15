@@ -80,6 +80,9 @@
 		<p class="text-text-muted">Checking your browser...</p>
 		<div bind:this={widget}></div>
 	{/if}
+	<p class="text-text-muted text-sm">
+		By joining, you approve all <a href="/#rules" class="text-accent underline">community rules</a>.
+	</p>
 	<noscript>
 		<p class="text-text-muted">This page needs JavaScript to verify you are not a bot.</p>
 	</noscript>

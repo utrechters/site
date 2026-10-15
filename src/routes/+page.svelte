@@ -340,6 +340,11 @@
 				>
 					Join us on WhatsApp <span aria-hidden="true">&rarr;</span>
 				</a>
+				<p class="text-text-muted mt-3 text-sm">
+					By joining, you approve all <a href="#rules" class="text-accent underline"
+						>community rules</a
+					>.
+				</p>
 			</div>
 		</div>
 	</div>
