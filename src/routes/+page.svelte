@@ -35,7 +35,7 @@
 	const mainGroupRules = [
 		{
 			title: "Stay on topic.",
-			text: "Post about events, going out, meeting people, language, culture and life in Utrecht. Off-topic chat goes in the “Discuss anything” group."
+			text: 'Post about events, going out, meeting people, language, culture and life in Utrecht. Off-topic chat goes in the "Discuss anything" group.'
 		},
 		{
 			title: "Be kind.",
@@ -43,7 +43,7 @@
 		},
 		{
 			title: "Keep it short.",
-			text: "Take long conversations to “Discuss anything” or a private chat."
+			text: 'Take long conversations to "Discuss anything" or a private chat.'
 		},
 		{
 			title: "No self-promotion.",
@@ -51,7 +51,7 @@
 		},
 		{
 			title: "No politics.",
-			text: "Leave out political debate, campaigns and pushing a cause."
+			text: 'Leave out political debate, campaigns and pushing a cause. Exception: the "Discuss anything" group.'
 		}
 	]
 
@@ -76,7 +76,7 @@
 		},
 		{
 			q: "Why are there several groups?",
-			a: "The main group has many members, so it stays focused on meeting up. Other groups, like “Discuss anything”, are for everything else. Join the ones you like."
+			a: 'The main group has many members, so it stays focused on meeting up. Other groups, like "Discuss anything", are for everything else. Join the ones you like.'
 		},
 		{
 			q: "Who are the admins?",
