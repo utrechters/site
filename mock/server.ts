@@ -8,10 +8,22 @@ function nextWeekday(day: 2 | 5): Date {
 	return d
 }
 
-const data = {
-	Tuesday: { link: "https://www.meetup.com/utrechters/events/mock-tuesday", date: nextWeekday(2) },
-	Friday: { link: "https://www.meetup.com/utrechters/events/mock-friday", date: nextWeekday(5) }
-}
+const icon = "https://www.meetup.com/favicon.ico"
+
+const data = [
+	{
+		title: "Mingle Mania",
+		link: "https://www.meetup.com/utrechters/events/mock-tuesday",
+		date: nextWeekday(2),
+		icon
+	},
+	{
+		title: "First Friday's drinks",
+		link: "https://www.meetup.com/utrechters/events/mock-friday",
+		date: nextWeekday(5),
+		icon
+	}
+].sort((a, b) => a.date.getTime() - b.date.getTime())
 
 createServer((req, res) => {
 	if (req.url === "/events") {

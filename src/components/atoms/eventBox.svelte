@@ -11,15 +11,13 @@
 		alt: string
 		text: string
 		url: string
-		date: Date | null | undefined
+		date: Date
 		dark?: boolean
 	} = $props()
 
-	const day = $derived(date ? date.toLocaleDateString("en-GB", { day: "numeric" }) : null)
-	const month = $derived(
-		date ? date.toLocaleDateString("en-GB", { month: "short" }).toUpperCase() : null
-	)
-	const weekday = $derived(date ? date.toLocaleDateString("en-GB", { weekday: "long" }) : null)
+	const day = $derived(date.toLocaleDateString("en-GB", { day: "numeric" }))
+	const month = $derived(date.toLocaleDateString("en-GB", { month: "short" }).toUpperCase())
+	const weekday = $derived(date.toLocaleDateString("en-GB", { weekday: "long" }))
 </script>
 
 <a
@@ -27,29 +25,32 @@
 	target="_blank"
 	rel="noreferrer"
 	class={[
-		"group flex flex-col overflow-hidden rounded-xl shadow-sm",
+		"group flex h-full flex-col overflow-hidden rounded-xl shadow-sm",
 		"motion-safe:transition motion-safe:duration-200 motion-safe:ease-out",
 		dark
 			? "border border-white/10 bg-white/5 hover:bg-white/10 hover:shadow-lg"
 			: "border-warm border bg-white hover:shadow-md"
 	].join(" ")}
 >
-	<div class={["flex flex-1 items-center gap-4", dark ? "px-5 py-8" : "p-4"].join(" ")}>
+	<div class={["flex flex-1 items-center gap-4", dark ? "px-4 py-6" : "p-4"].join(" ")}>
 		<img
 			src={img}
 			{alt}
-			class={["shrink-0 rounded-lg object-contain", dark ? "h-20 w-20" : "h-10 w-10"].join(" ")}
+			class={["shrink-0 rounded-lg object-cover", dark ? "h-16 w-16" : "h-10 w-10"].join(" ")}
 		/>
 		<div class="min-w-0">
-			<p class={["font-semibold", dark ? "text-lg text-white" : "text-text text-sm"].join(" ")}>
+			<p
+				title={text}
+				class={[
+					"line-clamp-3 min-h-[3lh] font-semibold",
+					dark ? "text-base text-white" : "text-text text-sm"
+				].join(" ")}
+			>
 				{text}
 			</p>
 			<p class={["text-xs", dark ? "text-white/50" : "text-text-muted"].join(" ")}>
-				{#if day && month && weekday}
-					{weekday}, {day} {month}
-				{:else}
-					&nbsp;
-				{/if}
+				{weekday}, {day}
+				{month}
 			</p>
 		</div>
 	</div>
@@ -62,10 +63,6 @@
 				: "border-warm bg-accent-light text-accent group-hover:bg-accent group-hover:text-white"
 		].join(" ")}
 	>
-		{#if date}
-			Join on Meetup &rarr;
-		{:else}
-			Browse all &rarr;
-		{/if}
+		RSVP on Meetup &rarr;
 	</div>
 </a>

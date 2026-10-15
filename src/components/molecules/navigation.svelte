@@ -14,12 +14,7 @@
 		>
 		<a href="/#contact" class="text-text-muted hover:text-text text-sm transition-colors">Contact</a
 		>
-		<a
-			href="https://chat.whatsapp.com/GopSuzuFKRBKeYVKQrX4pE"
-			target="_blank"
-			rel="noreferrer"
-			class="ml-2"
-		>
+		<a href="/p/whatsapp" target="_blank" rel="noreferrer" class="ml-2">
 			<SvgIcon src="/whatsapp.svg" alt="WhatsApp Community" />
 		</a>
 	</div>

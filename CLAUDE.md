@@ -130,8 +130,9 @@ This site has minimal dependencies by design. Before adding any package:
 Server-side only — see [src/routes/+page.server.ts](src/routes/+page.server.ts).
 
 - Endpoint configured via `VITE_EVENT_API` env var (default: `http://localhost:3001`)
-- Returns upcoming Tuesday and Friday meetup events
-- Shape: `{ Tuesday: { link: string, date: Date | null }, Friday: { ... } }`
+- Returns the next 0 to 3 upcoming events, sorted by date, one per title
+- Shape: `{ title: string, link: string, date: string, icon: string }[]` (`date` is ISO 8601, never null)
+- `[]` renders an empty state
 - Caching is handled by SvelteKit's server load lifecycle — no manual cache logic needed
 - Changes weekly at most; the server load runs on each page request (SSR)
 

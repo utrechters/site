@@ -1,35 +1,19 @@
+import { fetchEvents, iconId } from "$lib/server/events"
 import type { PageServerLoad } from "./$types"
 
-const EVENT_API = import.meta.env.VITE_EVENT_API || "http://localhost:3001"
-
-export type View = {
-	links: EventLinks
-}
-
 export type EventLink = {
+	title: string
 	link: string
-	date: Date | null
-}
-
-export type EventLinks = {
-	Tuesday: EventLink
-	Friday: EventLink
+	date: Date
+	icon: string
 }
 
 export const load: PageServerLoad = async ({ fetch }) => {
-	const response = await fetch(`${EVENT_API}/events`)
-	if (!response.ok) {
-		throw new Error(`Event API returned ${response.status}`)
-	}
-	const data = await response.json()
+	const data = await fetchEvents(fetch)
 
 	return {
-		links: {
-			Tuesday: {
-				link: data.Tuesday.link,
-				date: data.Tuesday.date ? new Date(data.Tuesday.date) : null
-			},
-			Friday: { link: data.Friday.link, date: data.Friday.date ? new Date(data.Friday.date) : null }
-		}
+		events: data.map(
+			(e): EventLink => ({ ...e, date: new Date(e.date), icon: `/icons/${iconId(e.icon)}` })
+		)
 	}
 }

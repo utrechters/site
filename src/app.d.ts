@@ -8,6 +8,19 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+
+	interface Window {
+		turnstile: {
+			render(
+				element: HTMLElement,
+				options: {
+					sitekey: string
+					callback: (token: string) => void
+					"error-callback"?: () => void
+				}
+			): string
+		}
+	}
 }
 
 export {}
