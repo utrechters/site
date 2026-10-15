@@ -1,6 +1,6 @@
 # CLAUDE.md — utrechters
 
-Volunteer-run website for a Utrecht-based expat meetup community. Intentionally small and simple — keep it that way.
+Volunteer-run website for a Utrecht-based meetup community for expats and locals. Intentionally small and simple — keep it that way.
 
 ## Stack
 

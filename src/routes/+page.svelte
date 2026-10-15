@@ -98,7 +98,7 @@
 </script>
 
 <svelte:head>
-	<title>Utrechters — Utrecht's expat meetup community</title>
+	<title>Utrechters — Utrecht's meetup community for expats and locals</title>
 	<meta
 		name="description"
 		content="Utrechters is a volunteer-run meetup group for locals and expats in Utrecht. We meet every Tuesday and first Friday for drinks, fun, and new friendships."
@@ -108,7 +108,10 @@
 	<meta property="og:site_name" content="Utrechters" />
 	<meta property="og:locale" content="en_GB" />
 	<meta property="og:url" content="{SITE_URL}/" />
-	<meta property="og:title" content="Utrechters — Utrecht's expat meetup community" />
+	<meta
+		property="og:title"
+		content="Utrechters — Utrecht's meetup community for expats and locals"
+	/>
 	<meta
 		property="og:description"
 		content="Volunteer-run meetup group for locals and expats in Utrecht, since 2008."
@@ -137,7 +140,7 @@
 				We are the <span class="font-semibold text-white/80">UTRECHTERS</span>.
 			</span>
 		</h1>
-		<p class="mt-3 text-sm text-white/50">Expat and local meetups in Utrecht since 2008.</p>
+		<p class="mt-3 text-sm text-white/50">Meetups for expats and locals in Utrecht since 2008.</p>
 	</div>
 
 	<div class="mt-20 flex w-full max-w-4xl flex-col items-center gap-4">
