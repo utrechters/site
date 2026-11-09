@@ -6,11 +6,11 @@ Volunteer-run website for a Utrecht-based meetup community for expats and locals
 
 | Tool         | Version                           |
 | ------------ | --------------------------------- |
-| SvelteKit    | ^2.50                             |
-| Svelte       | ^5.50 (runes mode)                |
-| Vite         | ^6                                |
+| SvelteKit    | ^3.1                              |
+| Svelte       | ^5.57 (runes mode)                |
+| Vite         | ^8                                |
 | Tailwind CSS | v4 (via `@tailwindcss/vite`)      |
-| TypeScript   | ^5, strict mode                   |
+| TypeScript   | ^6.0, strict mode                 |
 | Adapter      | `@sveltejs/adapter-netlify`       |
 | Linting      | ESLint 9 flat config + Prettier 3 |
 

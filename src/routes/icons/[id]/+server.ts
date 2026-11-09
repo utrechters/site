@@ -1,5 +1,5 @@
 import { error } from "@sveltejs/kit"
-import { downloadIcon, fetchEvents, iconId, readIcon } from "$lib/server/events"
+import { downloadIcon, fetchEvents, iconId, readIcon } from "#lib/server/events.ts"
 import type { RequestHandler } from "./$types"
 
 export const GET: RequestHandler = async ({ params, fetch }) => {

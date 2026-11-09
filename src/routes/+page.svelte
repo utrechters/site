@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { browser } from "$app/environment"
-	import { inView } from "$lib/inView"
-	import { jsonLd, SITE_URL, TUESDAY_VENUE } from "$lib/seo"
+	import { browser } from "$app/env"
+	import { inView } from "#lib/inView.ts"
+	import { jsonLd, SITE_URL, TUESDAY_VENUE } from "#lib/seo.ts"
 
 	import EventBox from "../components/atoms/eventBox.svelte"
 	import Footer from "../components/organisms/footer.svelte"
@@ -45,7 +45,7 @@
 		},
 		{
 			title: "No self-promotion.",
-			text: "✅ Going to a concert together is good. ❌ Promoting your <strong>own</strong> yoga class is bad. Not sure? Ask an admin."
+			text: "✅ Going to a concert together is good.<br />❌ Promoting your <strong>own</strong> yoga class is bad.<br />Not sure? Ask an admin."
 		},
 		{
 			title: "No politics.",

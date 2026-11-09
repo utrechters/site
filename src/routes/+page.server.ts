@@ -1,4 +1,4 @@
-import { fetchEvents, iconId } from "$lib/server/events"
+import { fetchEvents, iconId } from "#lib/server/events.ts"
 import type { PageServerLoad } from "./$types"
 
 export type EventLink = {
@@ -12,8 +12,10 @@ export const load: PageServerLoad = async ({ fetch }) => {
 	const data = await fetchEvents(fetch)
 
 	return {
-		events: data.map(
-			(e): EventLink => ({ ...e, date: new Date(e.date), icon: `/icons/${iconId(e.icon)}` })
-		)
+		events: data.map((e): EventLink => ({
+			...e,
+			date: new Date(e.date),
+			icon: `/icons/${iconId(e.icon)}`
+		}))
 	}
 }
