@@ -4,3 +4,6 @@ publish = "build"
 
 [build.environment]
 NODE_VERSION = "24"
+
+[context.deploy-preview]
+ignore = '''! curl -fsS "https://api.github.com/repos/utrechters/site/issues/$REVIEW_ID/labels" | grep -q '"name": *"preview"' '''
