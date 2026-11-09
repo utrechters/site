@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Privacy Policy — Utrechters</title>
+	<title>Privacy Policy | Utrechters</title>
 	<meta name="description" content="Privacy policy for the Utrechters meetup community website." />
 	<meta name="robots" content="noindex" />
 </svelte:head>
@@ -15,7 +15,8 @@
 		<h2 class="text-text mt-8 mb-2 text-lg font-semibold">1. Who we are</h2>
 		<p class="text-text-muted mb-4 leading-relaxed">
 			This website is operated by the Utrechters community. If you have any questions about this
-			Privacy Policy, you can contact us on GitHub or email.
+			Privacy Policy, get in touch through any of the platforms on our
+			<a href="/#contact" class="text-accent underline">contact page</a>.
 		</p>
 
 		<h2 class="text-text mt-8 mb-2 text-lg font-semibold">2. Hosting</h2>
@@ -58,9 +59,11 @@
 
 		<h2 class="text-text mt-8 mb-2 text-lg font-semibold">4. Contact</h2>
 		<p class="text-text-muted mb-4 leading-relaxed">
-			If you contact us via email or contact form, we process the data you provide solely to respond
-			to your inquiry. Legal basis: Article 6(1)(b) and 6(1)(f) GDPR. We do not share this data with
-			third parties unless legally required.
+			If you contact us through one of the platforms on our
+			<a href="/#contact" class="text-accent underline">contact page</a>, we process the data you
+			provide solely to respond to your inquiry. Legal basis: Article 6(1)(b) and 6(1)(f) GDPR. We
+			do not share this data with third parties unless legally required. The platforms themselves
+			process your messages under their own privacy policies.
 		</p>
 
 		<h2 class="text-text mt-8 mb-2 text-lg font-semibold">5. Data retention</h2>

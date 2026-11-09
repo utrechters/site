@@ -9,12 +9,10 @@
 	let { data } = $props()
 	const events = $derived(data.events)
 
-	// Svelte 5 state (runes)
 	let aboutIn = $state(false)
 	let rulesIn = $state(false)
 	let contactIn = $state(false)
 
-	// Helper: classes for "reveal"
 	const revealBase = "motion-safe:transition motion-safe:duration-500 motion-safe:ease-out"
 
 	const principles = [
@@ -80,7 +78,7 @@
 		},
 		{
 			q: "Who are the admins?",
-			a: "Open the group info. Admins are marked “Group admin” in the member list."
+			a: 'Open the group info. Admins are marked "Group admin" in the member list.'
 		},
 		{
 			q: "Someone made me uncomfortable. What do I do?",
@@ -98,10 +96,10 @@
 </script>
 
 <svelte:head>
-	<title>Utrechters — Utrecht's meetup community for expats and locals</title>
+	<title>Utrechters | Utrecht's meetup community for expats and locals</title>
 	<meta
 		name="description"
-		content="Utrechters is a volunteer-run meetup group for locals and expats in Utrecht. We meet every Tuesday and first Friday for drinks, fun, and new friendships."
+		content="Utrechters is a volunteer-run meetup group for locals and expats in Utrecht. Fixed schedule outings are Tuesdays and First Fridays."
 	/>
 	<link rel="canonical" href="{SITE_URL}/" />
 	<meta property="og:type" content="website" />
@@ -110,7 +108,7 @@
 	<meta property="og:url" content="{SITE_URL}/" />
 	<meta
 		property="og:title"
-		content="Utrechters — Utrecht's meetup community for expats and locals"
+		content="Utrechters | Utrecht's meetup community for expats and locals"
 	/>
 	<meta
 		property="og:description"
@@ -245,8 +243,8 @@
 			<div class="bg-cream/60 space-y-6 rounded-2xl p-6 shadow-sm ring-1 ring-black/5">
 				<div class="text-text/80 space-y-3 leading-relaxed">
 					<p>
-						This community helps <span class="text-text font-semibold">you</span> connect, feel welcome
-						and meet people in Utrecht. In practice, that means people from all around the globe.
+						This community helps <span class="text-text font-semibold">you</span> meet people and feel
+						at home in Utrecht. In practice, that means people from all around the globe.
 					</p>
 					<p>Joining a group full of strangers takes courage. We're here to back you up.</p>
 				</div>
@@ -265,11 +263,8 @@
 				</ul>
 
 				<div class="border-t border-black/10 pt-5">
-					<p class="text-text/80 leading-relaxed">
+					<p class="text-text font-medium">
 						We're not here to build a brand. We're here to build bridges.
-					</p>
-					<p class="text-text mt-3 font-medium">
-						Let's make this a place you're proud to be part of.
 					</p>
 				</div>
 			</div>
@@ -309,7 +304,9 @@
 				</div>
 			</div>
 
-			<h3 class="text-text mt-12 mb-4 text-xl font-bold">Frequently asked questions</h3>
+			<h3 id="faq" class="text-text mt-12 mb-4 scroll-mt-20 text-xl font-bold">
+				Frequently asked questions
+			</h3>
 
 			<div class="space-y-3">
 				{#each faq as item (item.q)}
@@ -368,9 +365,12 @@
 
 			<div class="space-y-6 rounded-2xl bg-white/70 p-6 shadow-sm ring-1 ring-black/5">
 				<p class="text-text/80 leading-relaxed">
-					Questions, ideas, feedback — or just want to say hello?
+					Questions, ideas, feedback? Or just want to say hello?
 					<br />
-					Reach out in whatever way feels easiest for You.
+					If you have questions, make sure to check the
+					<a href="#faq" class="text-accent underline">FAQ</a> first.
+					<br />
+					You can reach us on any of the platforms below.
 				</p>
 
 				<ul class="space-y-4">
@@ -394,7 +394,7 @@
 						>
 							<span class="text-text block font-semibold">WhatsApp Community</span>
 							<span class="text-accent mt-1 block text-sm underline-offset-4 group-hover:underline"
-								>Join the conversation</span
+								>Join our WhatsApp Community</span
 							>
 						</a>
 					</li>
@@ -430,12 +430,12 @@
 
 				<div class="border-t border-black/10 pt-5">
 					<p class="text-text/80 leading-relaxed">
-						We’ll do our best to respond thoughtfully and in a reasonable time.
+						We're all volunteers, so a reply can take a few days.
 					</p>
 					<p class="text-text mt-4">
-						You don’t need a perfect reason to reach out.
+						No question is too small.
 						<br />
-						<span class="font-medium">Connection starts small.</span>
+						<span class="font-medium">Just send us a message.</span>
 					</p>
 				</div>
 			</div>
