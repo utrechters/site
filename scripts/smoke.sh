@@ -4,7 +4,7 @@ set -euo pipefail
 base=http://localhost:4173
 
 node --import tsx mock/server.ts >/dev/null &
-node_modules/.bin/vite preview --port 4173 --strictPort >/dev/null &
+PORT=4173 node scripts/serve.ts >/dev/null &
 trap 'kill $(jobs -p) 2>/dev/null' EXIT
 
 fail() {
@@ -51,6 +51,13 @@ assets=$(grep -o '_app/immutable/[^"]*\.\(js\|css\)' <<<"$home" | sort -u)
 for asset in $assets; do
 	status "/$asset" 200
 done
+
+css=$(for asset in $assets; do
+	if [[ $asset == *.css ]]; then curl -fsS "$base/$asset"; fi
+done)
+expect "compiled CSS" "$css" "--color-accent:#00816a"
+expect "compiled CSS" "$css" ".grid{"
+reject "compiled CSS" "$css" "@import"
 
 expect /privacy "$privacy" "<title>Privacy Policy | Utrechters</title>"
 expect /privacy "$privacy" "Privacy Policy</h1>"
