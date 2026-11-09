@@ -1,144 +1,87 @@
-# CLAUDE.md — utrechters
+# utrechters
 
-Volunteer-run website for a Utrecht-based meetup community for expats and locals. Intentionally small and simple — keep it that way.
+Volunteer-run website for a Utrecht meetup community for expats and locals. Keep it small and simple.
 
 ## Stack
 
-| Tool         | Version                           |
-| ------------ | --------------------------------- |
-| SvelteKit    | ^3.1                              |
-| Svelte       | ^5.57 (runes mode)                |
-| Vite         | ^8                                |
-| Tailwind CSS | v4 (via `@tailwindcss/vite`)      |
-| TypeScript   | ^6.0, strict mode                 |
-| Adapter      | `@sveltejs/adapter-netlify`       |
-| Linting      | ESLint 9 flat config + Prettier 3 |
+SvelteKit 3, Svelte 5 (runes), Vite 8, Tailwind CSS 4 via `@tailwindcss/vite`, TypeScript 6 strict, `@sveltejs/adapter-netlify`, ESLint 9, Prettier 3.
 
 ## Commands
 
 ```bash
-npm run dev        # dev server
-npm run build      # production build
-npm run preview    # preview production build
-npm run check      # svelte-check (type checking)
-npm run lint       # ESLint + Prettier check
-npm run format     # auto-format all files
+npm start          # mock event API on :3001 + dev server
+npm run dev        # dev server only
+npm run build
+npm run check      # svelte-check
+npm run lint       # Prettier check + ESLint
+npm run format
+npm run smoke      # after build: serves the build with the mock API and checks key pages
 ```
 
-Always run `npm run lint && npm run check` before considering a change done.
+Run `npm run lint && npm run check` before calling a change done.
 
-## Architecture
+## Structure
 
 ```
 src/
-  app.css                  # Tailwind import + custom CSS variables (theme lives here)
-  components/
-    atoms/                 # Single-purpose: eventBox, link, svgIcon
-    molecules/             # Composed: navigation, altNav
-    organisms/             # Layout-level: header, footer
+  app.css                    # Tailwind import + theme CSS variables
+  env.ts                     # env vars: WHATSAPP_LINK, TURNSTILE_SECRET, PUBLIC_TURNSTILE_SITE_KEY
+  components/                # atoms/, molecules/, organisms/
   lib/
-    inView.ts              # Intersection Observer utility
+    inView.ts                # IntersectionObserver helper
+    seo.ts                   # site constants, JSON-LD
+    server/events.ts         # event API fetch, icon cache
+    server/private.ts        # private links (WhatsApp)
   routes/
-    +layout.svelte         # Root layout
-    +page.server.ts        # Server-side event data fetch (NOT +page.ts)
-    +page.svelte           # Home page (hero, about, guidelines, contact)
-    privacy/
-      +page.svelte         # Privacy policy
+    +page.server.ts          # loads events
+    +page.svelte             # home: hero, about, rules, faq, contact
+    privacy/                 # privacy policy
+    icons/[id]/+server.ts    # proxies and caches event icons
+    p/[key]/                 # Turnstile page for a private link
+    api/private/+server.ts   # verifies the Turnstile token, returns private links
+mock/server.ts               # mock event API
+scripts/                     # smoke test (smoke.sh, serve.ts)
 ```
 
-- Component filenames: camelCase (e.g. `eventBox.svelte`)
-- Data loading: always server-side in `+page.server.ts`, never in `+page.ts`
-- In-page navigation uses hash anchors (`#about`, `#rules`, `#contact`)
+- Import lib code as `#lib/...` (`imports` in `package.json`).
+- Load data in `+page.server.ts`, never `+page.ts`.
+- In-page navigation uses hash anchors (`#about`, `#rules`, `#faq`, `#contact`).
 
-## Svelte 5 — Runes Only
+## Svelte
 
-Always use runes. Never use Svelte 4 legacy syntax.
+Runes only: `$props`, `$state`, `$derived`, `$effect`, `onclick={...}`, snippets with `{@render}`. No `export let`, `$:`, `on:event`, `createEventDispatcher`, stores or `<slot>`.
 
-```svelte
-<!-- Props -->
-let { title, count = 0 }: { title: string; count?: number } = $props()
+## Styling
 
-<!-- State -->
-let open = $state(false)
+- Tailwind v4: `@import "tailwindcss"` in `app.css`. Add colors as CSS variables there. `tailwind.config.ts` only loads the typography plugin.
+- Use the semantic colors, not raw ones like `text-green-700`: `cream` (page background), `warm` (borders, subtle backgrounds), `surface` (dark sections), `accent` (teal, interactive), `accent-light`, `highlight` (beige), `text`, `text-muted`.
+- Mobile-first, then `sm:` / `md:`. Grid for multi-column layouts.
+- Wrap animations in `motion-safe:`. No inline styles.
+- Semantic HTML, correct heading order, ARIA labels where needed.
+- External links get `target="_blank" rel="noreferrer"`.
 
-<!-- Derived -->
-let doubled = $derived(count * 2)
+## Code style
 
-<!-- Effects -->
-$effect(() => { console.log(open) })
+Prettier enforces tabs, no semicolons, double quotes, no trailing commas, 100-character lines. Component files are camelCase.
 
-<!-- Events -->
-<button onclick={() => (open = !open)}>toggle</button>
+## Dependencies
 
-<!-- Children (not slots) -->
-{@render children()}
-```
-
-- No `export let`, no `$:`, no `on:event`, no `createEventDispatcher`
-- No Svelte stores — use `$state` / `$derived` instead
-- No `<slot>` — use snippet syntax with `{@render}`
-
-## Tailwind CSS v4
-
-- Import: `@import "tailwindcss"` in `app.css` — no `@tailwind` directives
-- Theme tokens are CSS variables in `app.css`, not in a config file
-- No `tailwind.config.js` changes needed for new colors — add variables to `app.css`
-
-### Custom color palette
-
-| Variable                           | Usage                            |
-| ---------------------------------- | -------------------------------- |
-| `--color-cream` (`#faf7f2`)        | Page background                  |
-| `--color-warm` (`#f0ebe4`)         | Borders, subtle backgrounds      |
-| `--color-surface` (`#1e1c1a`)      | Dark sections background         |
-| `--color-accent` (`#00816a`)       | Primary interactive color (teal) |
-| `--color-accent-light` (`#e6f4f0`) | Light accent backgrounds         |
-| `--color-highlight` (`#e8d5b7`)    | Warm beige highlights            |
-| `--color-text` (`#2d2a26`)         | Body text                        |
-| `--color-text-muted` (`#6b6560`)   | Secondary text                   |
-
-Use these semantic names — avoid raw Tailwind color utilities like `text-green-700`.
-
-## Design Guidelines
-
-- **Mobile-first**: write base styles for mobile, layer `sm:` / `md:` on top
-- **Animations**: always wrap with `motion-safe:` — respect user preferences
-- **No inline styles** — Tailwind classes only
-- **Layouts**: CSS Grid for multi-column (`grid sm:grid-cols-2`)
-- **Accessibility**: semantic HTML, proper heading hierarchy (`h1` → `h2` → ...), ARIA labels where needed
-- **External links**: always `target="_blank" rel="noreferrer"`
-- `@tailwindcss/typography` is available for rich text sections
-
-## Code Style
-
-Enforced by Prettier — run `npm run format` to apply:
-
-- Tabs (width 2), no semicolons, double quotes, no trailing commas
-- Print width: 100 characters
-- Plugins active: `prettier-plugin-svelte`, `prettier-plugin-tailwindcss`
-
-## Dependencies Philosophy
-
-This site has minimal dependencies by design. Before adding any package:
-
-1. Can this be done in ~10 lines of Svelte or TypeScript? If yes, do that.
-2. Is it a dev-only tool (linting, typing)? Fine to add.
-3. Is it a runtime UI library or state manager? Probably not — ask first.
+Keep them minimal. If it fits in about 10 lines of code, write it. Dev-only tools are fine. Ask before adding a runtime UI library or state manager.
 
 ## Events API
 
-Server-side only — see [src/routes/+page.server.ts](src/routes/+page.server.ts).
-
-- Endpoint configured via `VITE_EVENT_API` env var (default: `http://localhost:3001`)
-- Returns the next 0 to 3 upcoming events, sorted by date, one per title
-- Shape: `{ title: string, link: string, date: string, icon: string }[]` (`date` is ISO 8601, never null)
-- `[]` renders an empty state
-- Caching is handled by SvelteKit's server load lifecycle — no manual cache logic needed
-- Changes weekly at most; the server load runs on each page request (SSR)
+- `VITE_EVENT_API` (default `http://localhost:3001`) returns the next 0 to 3 events, sorted by date, one per title.
+- Shape: `{ title, link, date, icon }[]`, all strings. `date` is ISO 8601, never null. `[]` renders an empty state.
+- The load runs on every request (SSR). Don't add cache logic.
 
 ## Deployment
 
-- Platform: Netlify
-- Build: `npm run build` → publish dir `build/`
-- Node-based Netlify functions (not Edge Functions)
-- Config: [netlify.toml](netlify.toml)
+Netlify with Node functions, not Edge Functions. `netlify.toml` builds with `npm run build` and publishes `build/`. Deploy previews only build for PRs with the `preview` label.
+
+## CI and Dependabot
+
+- `ci.yml` runs lint, check, build and smoke on PRs and on pushes to `main`. Its `check` job is required to merge.
+- Dependabot opens npm PRs daily, with minor and patch updates grouped, and GitHub Actions PRs monthly. Cooldown is 7 days for majors and 2 days otherwise. `@types/node` majors are ignored.
+- `dependabot-automerge.yml` enables squash auto-merge on every Dependabot PR, majors included. GitHub merges it once `check` passes.
+- Control a PR with comments: `@dependabot rebase`, `@dependabot recreate`, `@dependabot ignore this major version`, `@dependabot unignore <dependency>`.
+- TypeScript 7 is ignored until `svelte-check` supports it. See the TODO in `README.md`.
