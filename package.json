@@ -15,6 +15,7 @@
 		"smoke": "scripts/smoke.sh"
 	},
 	"devDependencies": {
+		"@eslint/js": "^10.0.1",
 		"@sveltejs/adapter-netlify": "^7.0.1",
 		"@sveltejs/kit": "^3.1.1",
 		"@sveltejs/vite-plugin-svelte": "^7.3.1",
