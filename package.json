@@ -15,6 +15,7 @@
 		"smoke": "scripts/smoke.sh"
 	},
 	"devDependencies": {
+		"@eslint/js": "^10.0.1",
 		"@sveltejs/adapter-netlify": "^7.0.1",
 		"@sveltejs/kit": "^3.1.1",
 		"@sveltejs/vite-plugin-svelte": "^7.3.1",
@@ -23,7 +24,7 @@
 		"@types/node": "24.19.2",
 		"autoprefixer": "^10.4.20",
 		"concurrently": "^10.0.6",
-		"eslint": "^9.39.0",
+		"eslint": "^10.14.0",
 		"eslint-config-prettier": "^10.1.0",
 		"eslint-plugin-svelte": "^3.15.0",
 		"globals": "^17.14.0",
